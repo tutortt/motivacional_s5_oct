@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impulsa tu Aprendizaje: Recursos y Acompañamiento - ADSO</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #003d5c 0%, #00597a 50%, #007499 100%);
+            padding: 0;
+            margin: 0;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Partículas flotantes animadas - tech themed */
+        .floating-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            font-size: 18px;
+            opacity: 0.12;
+            animation: float 15s infinite ease-in-out;
+            color: #39a900;
+            font-weight: 700;
+            font-family: 'Courier New', monospace;
+        }
+
+        .particle:nth-child(1) { left: 5%;  animation-delay: 0s;   top: 15%; font-size: 22px; }
+        .particle:nth-child(2) { left: 18%; animation-delay: 2s;   top: 55%; }
+        .particle:nth-child(3) { left: 32%; animation-delay: 4s;   top: 75%; font-size: 16px; }
+        .particle:nth-child(4) { left: 48%; animation-delay: 1s;   top: 35%; font-size: 20px; }
+        .particle:nth-child(5) { left: 63%; animation-delay: 3s;   top: 65%; }
+        .particle:nth-child(6) { left: 78%; animation-delay: 5s;   top: 25%; font-size: 14px; }
+        .particle:nth-child(7) { left: 92%; animation-delay: 2.5s; top: 45%; font-size: 22px; }
+        .particle:nth-child(8) { left: 85%; animation-delay: 6s;   top: 80%; font-size: 16px; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.12; }
+            25%       { transform: translateY(-28px) rotate(90deg); opacity: 0.22; }
+            50%       { transform: translateY(-55px) rotate(180deg); opacity: 0.12; }
+            75%       { transform: translateY(-28px) rotate(270deg); opacity: 0.22; }
+        }
+
+        .session-container {
+            width: 100%;
+            margin: 0;
+            background: #ffffff;
+            border-radius: 0;
+            overflow: visible;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            animation: fadeInUp 0.8s ease-out;
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Barra de acento superior animada */
+        .header-accent {
+            height: 5px;
+            background: linear-gradient(90deg, #39a900, #4cd137, #00b894, #39a900, #4cd137);
+            background-size: 400% 100%;
+            animation: gradientFlow 4s ease infinite;
+        }
+
+        @keyframes gradientFlow {
+            0%, 100% { background-position: 0% 50%; }
+            50%       { background-position: 100% 50%; }
+        }
+
+        /* ====== HEADER ====== */
+        .header-section {
+            background: linear-gradient(135deg, #002f47 0%, #003d5c 40%, #00597a 70%, #003d5c 100%);
+            padding: 10px 20px 14px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Rejilla decorativa de fondo en el header */
+        .header-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(57,169,0,0.06) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(57,169,0,0.06) 1px, transparent 1px);
+            background-size: 30px 30px;
+            pointer-events: none;
+        }
+
+        .header-badge {
+            display: inline-block;
+            background: rgba(57,169,0,0.18);
+            border: 1px solid rgba(57,169,0,0.45);
+            color: #7ddc4b;
+            font-size: 0.7rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 3px 14px;
+            border-radius: 20px;
+            margin-bottom: 7px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header-section h1 {
+            color: #fff;
+            font-size: clamp(1.05rem, 2.4vw, 1.45rem);
+            font-weight: 900;
+            margin: 4px 0 6px 0;
+            line-height: 1.25;
+            letter-spacing: -0.3px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header-section h1 span {
+            color: #4cd137;
+        }
+
+        .header-subtitle {
+            color: #a4c8d8;
+            font-size: clamp(0.78rem, 1.6vw, 0.9rem);
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+            letter-spacing: 0.3px;
+        }
+
+        /* ====== INTRO ====== */
+        .intro-section {
+            background: #f8f9fa;
+            padding: 10px 16px 8px 16px;
+            border-bottom: 1px solid #e0e0e0;
+            text-align: left;
+        }
+
+        .intro-section p {
+            max-width: 1200px;
+            margin: 0 0 7px 0;
+            color: #2c3e50;
+            line-height: 1.55;
+            font-size: 0.88rem;
+            text-align: left;
+        }
+
+        /* Tarjetas de aviso (amarilla / azul de la plantilla original) */
+        .notice-card {
+            border-radius: 8px;
+            padding: 10px 14px;
+            font-size: 0.87rem;
+            color: #2c3e50;
+            line-height: 1.5;
+        }
+
+        .notice-card.yellow {
+            background: #fff8e1;
+            border-left: 4px solid #f9a825;
+        }
+
+        .notice-card.blue {
+            background: #e3f2fd;
+            border-left: 4px solid #1976d2;
+        }
+
+        .notice-card.green {
+            background: #e8f5e9;
+            border-left: 4px solid #39a900;
+        }
+
+        .notices-row {
+            margin-top: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        /* ====== SPLIT LAYOUT ====== */
+        .split-section {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 6px;
+            padding: 0 10px 6px 10px;
+            align-items: start;
+        }
+
+        @media (min-width: 768px) {
+            .split-section {
+                grid-template-columns: 80% 20%;
+                align-items: stretch;
+            }
+
+            .split-image-zone {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 0 8px;
+            }
+        }
+
+        .split-text-zone {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            min-width: 0;
+        }
+
+        .split-image-zone {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+            min-width: 0;
+        }
+
+        /* ====== INFO BOX (green box with list) ====== */
+        .info-box {
+            background: linear-gradient(135deg, #e8f5e9, #f1f8f4);
+            border-left: 4px solid #39a900;
+            border-radius: 10px;
+            padding: 10px 14px;
+            margin: 4px 0;
+            box-shadow: 0 2px 10px rgba(57, 169, 0, 0.1);
+        }
+
+        .info-box h3 {
+            color: #1b5e20;
+            font-size: 0.97rem;
+            font-weight: 800;
+            margin-bottom: 9px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .info-box h3 i {
+            color: #39a900;
+            font-size: 1.05rem;
+        }
+
+        /* Grid de ítems destacados */
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px 14px;
+        }
+
+        @media (max-width: 600px) {
+            .highlights-grid { grid-template-columns: 1fr; }
+        }
+
+        .highlight-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            background: #ffffff;
+            border-radius: 7px;
+            padding: 7px 10px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+            border-left: 3px solid #39a900;
+            font-size: 0.83rem;
+            color: #2c3e50;
+            line-height: 1.4;
+        }
+
+        .highlight-item i {
+            color: #39a900;
+            font-size: 0.95rem;
+            margin-top: 1px;
+            flex-shrink: 0;
+        }
+
+        /* ====== SIDEBAR / IMAGEN ====== */
+        .sidebar-card {
+            background: transparent;
+            border: none;
+            padding: 0;
+            text-align: center;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .sidebar-image {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            border-radius: 0;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .sidebar-note {
+            color: #666;
+            font-size: 0.78rem;
+            line-height: 1.4;
+            margin-top: 6px;
+        }
+
+        .sidebar-note a { color: #007bff; }
+
+        /* ====== QUOTE SECTION ====== */
+        .quote-section {
+            background:
+                linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.85) 100%),
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><rect fill="%23e8f4eb" width="100" height="100"/><path d="M0,0 L100,100 M100,0 L0,100" stroke="%23c8e6c9" stroke-width="0.5" opacity="0.3"/></svg>');
+            background-color: #edf7ed;
+            padding: 15px 50px;
+            text-align: center;
+            font-style: italic;
+            box-shadow:
+                inset 0 2px 8px rgba(0,0,0,0.07),
+                inset 0 -2px 8px rgba(0,0,0,0.07);
+            animation: fadeIn 1s ease-out 0.8s both;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .quote-section { padding: 12px 25px; gap: 6px; }
+        }
+
+        .quote-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image:
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(57,169,0,0.03) 2px, rgba(57,169,0,0.03) 3px),
+                repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(57,169,0,0.02) 2px, rgba(57,169,0,0.02) 3px);
+            pointer-events: none;
+            opacity: 0.6;
+        }
+
+        .quote-content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        .quote-main-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 28px;
+            flex-wrap: nowrap;
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .quote-main-wrapper { flex-direction: column; gap: 10px; }
+        }
+
+        .quote-text-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .quote-text {
+            position: relative;
+            font-size: 1rem;
+            margin: 0;
+            line-height: 1.45;
+            font-family: 'Source Serif 4', Georgia, serif;
+            font-weight: 400;
+            letter-spacing: 0.3px;
+            font-style: italic;
+            background: linear-gradient(to right, #003d5c 0%, #1b5e20 100%);
+            background-size: 0% 100%;
+            background-repeat: no-repeat;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: writeTextLoop 6s ease-in-out infinite;
+        }
+
+        @keyframes writeTextLoop {
+            0%   { background-size: 0% 100%; }
+            50%  { background-size: 100% 100%; }
+            100% { background-size: 100% 100%; }
+        }
+
+        .quote-flourish {
+            margin: 8px 0;
+            width: 110px;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #39a900, transparent);
+            position: relative;
+        }
+
+        .quote-flourish::before,
+        .quote-flourish::after {
+            content: '◆';
+            position: absolute;
+            color: #39a900;
+            font-size: 0.7rem;
+            top: -6px;
+            text-shadow: 0 0 5px rgba(57,169,0,0.3);
+        }
+        .quote-flourish::before { left: -16px; }
+        .quote-flourish::after  { right: -16px; }
+
+        .quote-image-container {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 768px) {
+            .quote-image-container { display: none; }
+        }
+
+        .feather-emoji {
+            font-size: 2.5rem;
+            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.2));
+            animation: penWiggle 3s ease-in-out infinite;
+            display: block;
+        }
+
+        @keyframes penWiggle {
+            0%, 100% { transform: rotate(-8deg) translateY(0); }
+            50%       { transform: rotate(-12deg) translateY(-5px); }
+        }
+
+        .quote-author-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .quote-author {
+            color: #4a4a4a;
+            font-size: 0.95rem;
+            font-style: normal;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            padding: 6px 0 6px 12px;
+            border-left: 4px solid #39a900;
+            white-space: nowrap;
+        }
+
+        .quote-author::before {
+            content: '— ';
+            color: #39a900;
+            font-weight: 800;
+            font-size: 1rem;
+        }
+
+        /* ====== FOOTER ====== */
+        .footer {
+            background: linear-gradient(135deg, #003d5c 0%, #00597a 100%);
+            color: white;
+            padding: 12px 20px;
+            text-align: center;
+        }
+
+        .footer .name {
+            font-size: 0.9rem;
+            font-weight: 800;
+            margin-bottom: 3px;
+            color: #39a900;
+        }
+
+        /* ====== LABEL LABEL para anotaciones visuales (igual que la plantilla original) ====== */
+        .label-tag {
+            display: inline-block;
+            color: #e74c3c;
+            font-size: 0.78rem;
+            font-style: italic;
+            font-weight: 600;
+            margin-left: 10px;
+            opacity: 0.7;
+        }
+
+        /* Chip para tecnologías */
+        .tech-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: linear-gradient(135deg, #003d5c, #00597a);
+            color: #7ddc4b;
+            border-radius: 30px;
+            padding: 3px 11px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin: 2px 3px;
+        }
+
+        .tech-chips-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3px;
+            margin-top: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .highlights-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Partículas flotantes tech -->
+    <div class="floating-particles">
+        <div class="particle">{ }</div>
+        <div class="particle">&lt;/&gt;</div>
+        <div class="particle">[ ]</div>
+        <div class="particle">( )</div>
+        <div class="particle">01</div>
+        <div class="particle">JS</div>
+        <div class="particle">API</div>
+        <div class="particle">DB</div>
+    </div>
+
+    <div class="session-container">
+        <div class="header-accent"></div>
+
+        <!-- ====== HEADER ====== -->
+        <div class="header-section">
+           
+            <h1>¡Anuncio&nbsp;&nbsp; <span>Motivacional!</span></h1>
+            <p class="header-subtitle">Etapa Lectiva</p>
+        </div>
+
+        <div class="split-section">
+            <div class="split-text-zone">
+
+                <!-- ====== INTRO ====== -->
+                <div class="intro-section">
+                  <p><strong>Cordial saludo, estimados aprendices :</strong></p>
+                  <p> 
+                    Estudiar de forma virtual es una oportunidad para demostrar de qué están hechos: aquí <strong>cada aprendiz dirige su propio ritmo, y también su propio compromiso</strong>. El éxito se construye con <strong>constancia, orden y ganas de superarse</strong> cada día.
+<strong>Fijen horarios de estudio, ingresen a la plataforma con regularidad y avancen en sus actividades sin dejar todo para última hora.</strong> Antes de enviar cada evidencia, lean de nuevo la guía de aprendizaje y confirmen que cumplieron lo que se solicita.
+<br><br>
+Habrá momentos de cansancio o de duda, y es normal. <strong>Lo importante es respirar, pedir ayuda y volver a intentarlo con más fuerza.</strong> Cada obstáculo superado los hará más autónomos y más seguros de sus capacidades.<br><br>
+Detrás de la pantalla hay instructores y compañeros dispuestos a acompañarlos, así que <strong>no están solos</strong>. Escriban, consulten, participen en los foros y aprovechen cada espacio de apoyo: juntos el camino es más llevadero.<br><br>
+Estudien con entusiasmo y con la mirada puesta en su meta. <strong>Lo que hoy parece un pequeño esfuerzo será mañana el logro que los llene de orgullo.</strong>
+</p>
+                  
+                  
+                   
+                  <!--div class="notices-row">
+                        <div class="notice-card yellow">
+                            <strong>📘 Material de Apoyo:</strong>
+                            Lean detenidamente los documentos, guías y recursos teóricos disponibles en la plataforma.
+                            La comprensión conceptual es el primer paso hacia una evidencia de calidad.
+                        </div>
+                        <div class="notice-card blue">
+                            <strong>🎬 Videos Complementarios:</strong>
+                            Visualicen los videos paso a paso. Tomen notas, páusenlos y repítanlos cuantas veces necesiten.
+                            Son una guía práctica invaluable para el desarrollo de sus actividades.
+                        </div>
+                        <div class="notice-card green">
+                            <strong>🤝 Atención Sincrónica:</strong>
+                            ¿Tienen dudas? Asistan a los espacios de acompañamiento o soliciten sesión con su instructor.
+                            Juntos encontraremos el camino para avanzar con seguridad en su proceso formativo.
+                        </div>
+                    </div-->
+                </div>
+
+                <!-- ====== PUNTOS DESTACADOS ====== -->
+         
+            </div>
+
+            <!-- ====== IMAGEN LATERAL ====== -->
+            <div class="split-image-zone">
+                <div class="sidebar-card">
+				
+                    <img
+                        src="https://drive.google.com/thumbnail?id=1EmBmxzth2KM20ot26UTvIhWwZSbAgIL8&sz=w1000"
+                        alt="Aprendiz ADSO"
+                        class="sidebar-image"
+                    >
+                    <p class="sidebar-note">
+                        Ilustración de SENA - <a href="https://www.sena.edu.co" target="_blank">www.sena.edu.co</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ====== FRASE MOTIVADORA ====== -->
+        <div class="quote-section">
+            <div class="quote-content">
+                <div class="quote-main-wrapper">
+                    <div class="quote-text-wrapper">
+                        <p class="quote-text">
+                            No es porque las cosas sean difíciles que no nos atrevemos; es porque no nos atrevemos que son difíciles
+                        </p>
+                        <div class="quote-flourish"></div>
+                    </div>
+                    <div class="quote-image-container">
+                        <div style="width:50px; height:50px; display:flex; align-items:center; justify-content:center;">
+                            <span class="feather-emoji">💻</span>
+                        </div>
+                    </div>
+                    <div class="quote-author-wrapper">
+                        <div class="quote-author">&nbsp;Séneca&nbsp;</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="header-accent"></div>
+
+        <!-- ====== FOOTER ====== -->
+        <div class="footer">
+            <p class="name">
+                <i class="fas fa-user-tie"></i>
+                Fabián Alexander García Martínez
+            </p>
+        </div>
+
+        <div class="header-accent"></div>
+    </div>
+
+</body>
+</html>
